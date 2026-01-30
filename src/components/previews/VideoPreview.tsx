@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next'
 
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import Plyr from 'plyr-react'
+// import Plyr from 'plyr-react'
 import { useAsync } from 'react-async-hook'
 import { useClipboard } from 'use-clipboard-copy'
 
@@ -20,7 +20,12 @@ import FourOhFour from '../FourOhFour'
 import Loading from '../Loading'
 import CustomEmbedLinkMenu from '../CustomEmbedLinkMenu'
 
+import dynamic from 'next/dynamic'
 import 'plyr-react/plyr.css'
+
+const Plyr = dynamic(() => import('plyr-react'), {
+  ssr: false,
+})
 
 const VideoPlayer: FC<{
   videoName: string
